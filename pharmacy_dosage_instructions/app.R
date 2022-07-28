@@ -46,7 +46,7 @@ server <- function(input, output) {
     
       datatable(test, options = list(
         columnDefs = list(
-          list(width = 200, targets = 2)
+          list(width = 250, targets = 2)
         )
       ))
       
