@@ -1,0 +1,100 @@
+---
+title: "Pharmacy Dosage"
+output: html_document
+date: '2022-07-20'
+editor_options: 
+  chunk_output_type: console
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+# Importing Libraries
+```{r}
+
+library(tidyverse)
+library(lubridate)
+library(readxl)
+library(janitor)
+library(DT)
+
+
+
+```
+
+# Importing Data
+```{r}
+
+dosage <- read_excel("Dosage.xlsx", sheet = 2, col_names = F)%>%
+  clean_names()%>%
+  rename(medicine = 1, instruction = 2, instruction_2 = 3)%>%
+  mutate(medicine = str_to_upper(medicine))%>%
+  mutate(instruction = str_to_upper(instruction))
+
+
+
+
+```
+
+
+# Solution (https://stackoverflow.com/questions/62299741/automatic-line-break-in-dt-cell/62614668#62614668)
+```{r}
+
+
+mylist <- paste0("name",1:20)
+
+data <- data.frame(id = 1, members = I(list(mylist))) 
+
+DT::datatable(data)
+
+
+mylist <- paste0("name",1:20)
+data <- data.frame(id = 1, members = toString(mylist)) 
+DT::datatable(data, options = list(
+  columnDefs = list(
+    list(width = 200, targets = 2)
+  )
+))
+
+
+
+
+
+
+
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
